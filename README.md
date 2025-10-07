@@ -25,11 +25,11 @@ Modern hotel guests expect seamless, personalized service experiences similar to
 
 Amazon Nova Sonic is a foundation model (FM) within the Amazon Nova family, designed specifically for voice-enabled applications. Available through Amazon Bedrock, developers can use Nova Sonic to create applications that understand spoken language, process complex conversational interactions, and generate appropriate responses for real-time guest engagement. This innovative speech-to-speech model addresses traditional voice application challenges through:
 
-• Accurately recognizes streaming speech across accents with robustness to background noise
-• Adapts speech response to user's tone and sentiment  
-• Bidirectional streaming speech I/O with low user perceived latency
-• Graceful interruption handling and natural turn-taking in conversations
-• Industry-leading price-performance
+- Accurately recognizes streaming speech across accents with robustness to background noise
+- Adapts speech response to user's tone and sentiment
+- Bidirectional streaming speech I/O with low user perceived latency
+- Graceful interruption handling and natural turn-taking in conversations
+- Industry-leading price-performance
 
 When integrated with AWS serverless services, Nova Sonic delivers natural, human-like voice interactions that transform the in-room service experience. The architecture creates a cost-effective system that enhances both guest satisfaction and operational efficiency through intelligent automation.
 
@@ -52,6 +52,9 @@ Key features of the solution include:
 * Context-aware conversation management
 * Multi-service support (room service, housekeeping, concierge)
 
+![voice ai powered hotel in-room service architecture](assets/voice-ai-powered-hotel-in-room-service.jpg)
+*Figure 1. Reference Architecture of Conversational Natural Language Interface for Amazon Athena*
+
 The workflow consists of the following steps:
 
 1. Guests interact with an in-room digital interface built using modern web technologies, hosted on Amplify.
@@ -63,15 +66,6 @@ The workflow consists of the following steps:
 7. The system provides real-time updates to guests about their service request status.
 
 This architecture provides secure, efficient request processing while maintaining a simple, conversation-like experience for guests. The system scales automatically and maintains security through role-based access controls and secure credential management.
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
 
 ## Prerequisites
 
