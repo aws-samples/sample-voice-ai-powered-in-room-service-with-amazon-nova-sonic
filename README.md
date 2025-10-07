@@ -52,6 +52,9 @@ Key features of the solution include:
 * Context-aware conversation management
 * Multi-service support (room service, housekeeping, concierge)
 
+![voice_ai_powered_hotel_in_room_service_architecture](assets/voice-ai-powered-hotel-in-room-service.jpg)
+*Figure 1. Reference Architecture of Voice AI Powered Hotel In-Room Service*
+
 The workflow consists of the following steps:
 
 1. Guests interact with an in-room digital interface built using modern web technologies, hosted on Amplify.
@@ -63,15 +66,6 @@ The workflow consists of the following steps:
 7. The system provides real-time updates to guests about their service request status.
 
 This architecture provides secure, efficient request processing while maintaining a simple, conversation-like experience for guests. The system scales automatically and maintains security through role-based access controls and secure credential management.
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
 
 ## Prerequisites
 
@@ -116,10 +110,11 @@ AWS resource usage will incur costs. When deployment is complete, the following 
 
 * **Amazon DynamoDB tables:**
   * MenuTable – Stores room service menu items, pricing, and customization options
-  * ServiceRequestTable – Stores housekeeping and concierge service requests
-  * GuestTable – Stores guest information and preferences
+  * RoombookingTable – Stores guest information and preferences
   * OrderTable – Stores completed and pending room service orders
   * ChatTable – Stores conversation history for service interactions
+  * CartTable - Stores the temporary cart information synced with frontend
+  * HousekeepingTable - Stores completed and pending housekeeping orders
 
 * **Amazon S3, CloudFront and AWS WAF resources:**
   * ServiceImagesBucket – S3 bucket for storing service item images
