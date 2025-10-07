@@ -25,11 +25,11 @@ Modern hotel guests expect seamless, personalized service experiences similar to
 
 Amazon Nova Sonic is a foundation model (FM) within the Amazon Nova family, designed specifically for voice-enabled applications. Available through Amazon Bedrock, developers can use Nova Sonic to create applications that understand spoken language, process complex conversational interactions, and generate appropriate responses for real-time guest engagement. This innovative speech-to-speech model addresses traditional voice application challenges through:
 
-• Accurately recognizes streaming speech across accents with robustness to background noise
-• Adapts speech response to user's tone and sentiment  
-• Bidirectional streaming speech I/O with low user perceived latency
-• Graceful interruption handling and natural turn-taking in conversations
-• Industry-leading price-performance
+- Accurately recognizes streaming speech across accents with robustness to background noise
+- Adapts speech response to user's tone and sentiment
+- Bidirectional streaming speech I/O with low user perceived latency
+- Graceful interruption handling and natural turn-taking in conversations
+- Industry-leading price-performance
 
 When integrated with AWS serverless services, Nova Sonic delivers natural, human-like voice interactions that transform the in-room service experience. The architecture creates a cost-effective system that enhances both guest satisfaction and operational efficiency through intelligent automation.
 
