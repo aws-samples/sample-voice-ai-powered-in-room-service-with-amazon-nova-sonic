@@ -178,8 +178,8 @@ Once both CloudFormation templates are successfully deployed, you'll have a full
 
 You need to manually deploy the Amplify application using the frontend code found on GitHub. Complete the following steps:
 
-1. Download the frontend code `frontend-hotel-inroom-service.zip` from GitHub.
-2. Use the .zip file to manually [deploy](deploy/frontend-hotel-inroom-service.zip) the application in Amplify.
+1. Download the frontend code `deploy/frontend-hotel-inroom-service.zip` from GitHub.
+2. Use the .zip file to manually [deploy](https://docs.aws.amazon.com/amplify/latest/userguide/manual-deploys.html) the application in Amplify.
 3. Return to the Amplify page and use the domain it automatically generated to access the application.
 
 ## User authentication
