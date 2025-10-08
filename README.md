@@ -53,7 +53,7 @@ Key features of the solution include:
 * Multi-service support (room service, housekeeping, concierge)
 
 ![voice ai powered hotel in-room service architecture](assets/voice-ai-powered-hotel-in-room-service.jpg)
-*Figure 1. Reference Architecture of Conversational Natural Language Interface for Amazon Athena*
+*Figure 1. Reference Architecture of Voice AI Powered Hotel In-Room Service Platform*
 
 The workflow consists of the following steps:
 
@@ -79,7 +79,9 @@ You must have the following in place to complete the solution in this post:
 
 Deploy the CloudFormation templates in an AWS Region where Amazon Bedrock is available and has support for the following models: Amazon Nova Sonic and Amazon Nova Canvas.
 
-This solution consists of two CloudFormation templates that work together to create a complete hotel in-room service system. The `nova-sonic-infrastructure-hotel-InRoomService.yaml` template establishes the foundational AWS infrastructure including Cognito user authentication, S3 storage with CloudFront CDN for service images, DynamoDB tables for menu items and service requests, and API Gateway endpoints with proper CORS configuration. The `nova-sonic-application-hotel-InRoomService.yaml` template builds upon this foundation by deploying Lambda functions that populate the system with a complete embedded hotel service menu featuring room service items, housekeeping options, and concierge services, while using the Amazon Nova Canvas AI model to automatically generate professional service imagery and storing them in the S3 bucket for delivery through CloudFront.
+This solution consists of two CloudFormation templates that work together to create a complete hotel in-room service system. 
+- The `nova-sonic-infrastructure-hotel-InRoomService.yaml` template establishes the foundational AWS infrastructure including Cognito user authentication, S3 storage with CloudFront CDN for service images, DynamoDB tables for menu items and service requests, and API Gateway endpoints with proper CORS configuration.
+- The `nova-sonic-application-hotel-InRoomService.yaml` template builds upon this foundation by deploying Lambda functions that populate the system with a complete embedded hotel service menu featuring room service items, housekeeping options, and concierge services, while using the Amazon Nova Canvas AI model to automatically generate professional service imagery and storing them in the S3 bucket for delivery through CloudFront.
 
 ### Deploy Infrastructure Stack
 
@@ -110,14 +112,15 @@ AWS resource usage will incur costs. When deployment is complete, the following 
 
 * **Amazon DynamoDB tables:**
   * MenuTable – Stores room service menu items, pricing, and customization options
-  * ServiceRequestTable – Stores housekeeping and concierge service requests
-  * GuestTable – Stores guest information and preferences
+  * HousekeepingTable – Stores housekeeping and concierge service requests
+  * RoombookingTable – Stores guest information and preferences
   * OrderTable – Stores completed and pending room service orders
   * ChatTable – Stores conversation history for service interactions
+  * CartTable – Stores real-time cart information for each user
 
 * **Amazon S3, CloudFront and AWS WAF resources:**
-  * ServiceImagesBucket – S3 bucket for storing service item images
-  * ServiceImageCloudFrontDistribution - CloudFront distribution for global content delivery
+  * o	MenuImagesBucket – S3 bucket for storing menu item images
+  * MenuImageCloudFrontDistribution - CloudFront distribution for global content delivery
   * CloudFrontOriginAccessIdentity – Secure access between CloudFront and S3
   * CloudFrontWebACL – WAF protection for CloudFront distribution with security rules
 
@@ -126,9 +129,10 @@ AWS resource usage will incur costs. When deployment is complete, the following 
   * API resources and methods:
     * /menu (GET, OPTIONS)
     * /housekeeping (GET, POST, OPTIONS)
-    * /concierge (GET, POST, OPTIONS)
+    * /loyalty (GET, POST, OPTIONS)
     * /order (POST, GET, OPTIONS)
     * /chat (POST, OPTIONS)
+    * /cart (POST, OPTIONS)
   * API deployment to specified environment stage
 
 * **AWS Lambda function:**
@@ -141,12 +145,15 @@ After you deploy the CloudFormation template, copy the following from the Output
 
 * menuApiUrl
 * housekeepingApiUrl
-* conciergeApiUrl
 * orderApiUrl
 * chatApiUrl
+* cartApiUrl
 * UserPoolClientId
 * UserPoolId
 * IdentityPoolId
+
+![Infrastructure_template_deployment_output](assets/nova-sonic-infra-hotel-inroom_output.png)
+*Figure 2. Output of infrastructure deployment template*
 
 These output values are essential for configuring your frontend application (deployed via AWS Amplify) to connect with the backend services. The API URLs will be used for making REST API calls, while the Cognito IDs will be used for guest authentication and authorization.
 
@@ -172,7 +179,7 @@ Once both CloudFormation templates are successfully deployed, you'll have a full
 You need to manually deploy the Amplify application using the frontend code found on GitHub. Complete the following steps:
 
 1. Download the frontend code `frontend-hotel-inroom-service.zip` from GitHub.
-2. Use the .zip file to manually [deploy](https://docs.aws.amazon.com/amplify/latest/userguide/manual-deploys.html) the application in Amplify.
+2. Use the .zip file to manually [deploy](deploy/frontend-hotel-inroom-service.zip) the application in Amplify.
 3. Return to the Amplify page and use the domain it automatically generated to access the application.
 
 ## User authentication
@@ -307,10 +314,10 @@ AWS products or services are provided "as is" without warranties, representation
 AWS responsibilities and liabilities to its customers are controlled by AWS agreements, and this solution is not part of, nor does it modify, any agreement between AWS and its customers.
 
 ## Authors
-
-- [Author Name], [Title]
-- [Author Name], [Title]
-- [Author Name], [Title]
+- Ravi Kumar, Sr. TAM
+- Salman Ahmed, Sr. TAM
+- Sergio Barraza, Sr. TAM
+- Ankush Goyal, Sr. TAM
 
 ## License
 
