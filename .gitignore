@@ -1,0 +1,5 @@
+guidance-docs/
+.ash/
+temp/
+cdk.out/
+.DS_Store
